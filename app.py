@@ -85,12 +85,10 @@ def dashboard():
 
     if "user" in session:
 
-        return f"""
-        <h1>Welcome to Sportify Arena</h1>
-        <h2>Hello {session['user']}</h2>
-
-        <a href='/logout'>Logout</a>
-        """
+        return render_template(
+            "dashboard.html",
+            user=session["user"]
+        )
 
     return redirect("/loginpage")
 

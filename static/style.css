@@ -46,3 +46,60 @@ button{
     cursor:pointer;
     font-size:16px;
 }
+
+.navbar{
+    background:#111827;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    background:orange;
+    padding:10px 20px;
+    border-radius:8px;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    color:white;
+}
+
+.hero h2{
+    font-size:50px;
+}
+
+.hero p{
+    font-size:22px;
+    color:#d1d5db;
+}
+
+.sports-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    padding:40px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    width:300px;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h2{
+    margin-bottom:15px;
+}
