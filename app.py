@@ -21,6 +21,18 @@ class User(db.Model):
 
     password = db.Column(db.String(100), nullable=False)
 
+class Tournament(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    team_name = db.Column(db.String(100), nullable=False)
+
+    captain_name = db.Column(db.String(100), nullable=False)
+
+    sport = db.Column(db.String(50), nullable=False)
+
+    contact = db.Column(db.String(20), nullable=False)
+
 
 @app.route("/")
 def home():
@@ -91,6 +103,35 @@ def dashboard():
         )
 
     return redirect("/loginpage")
+
+@app.route("/tournament")
+def tournament():
+
+    if "user" in session:
+        return render_template("tournament.html")
+
+    return redirect("/loginpage")
+
+
+@app.route("/register_tournament", methods=["POST"])
+def register_tournament():
+
+    team_name = request.form["team_name"]
+    captain_name = request.form["captain_name"]
+    sport = request.form["sport"]
+    contact = request.form["contact"]
+
+    new_team = Tournament(
+        team_name=team_name,
+        captain_name=captain_name,
+        sport=sport,
+        contact=contact
+    )
+
+    db.session.add(new_team)
+    db.session.commit()
+
+    return f"{team_name} registered successfully!"
 
 
 @app.route("/logout")

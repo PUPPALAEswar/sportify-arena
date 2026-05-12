@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Registration</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="signup-box">
+
+        <h1>Tournament Registration</h1>
+
+        <form action="/register_tournament" method="POST">
+
+            <input
+            type="text"
+            name="team_name"
+            placeholder="Team Name"
+            required>
+
+            <input
+            type="text"
+            name="captain_name"
+            placeholder="Captain Name"
+            required>
+
+            <select name="sport">
+
+                <option>Cricket</option>
+
+                <option>Volleyball</option>
+
+            </select>
+
+            <input
+            type="text"
+            name="contact"
+            placeholder="Contact Number"
+            required>
+
+            <button type="submit">
+                Register Team
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
