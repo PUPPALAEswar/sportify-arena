@@ -115,4 +115,14 @@ select{
 .card-link{
     text-decoration:none;
     color:black;
+}   
+
+.switch-page{
+    margin-top:20px;
+}
+
+.switch-page a{
+    color:orange;
+    text-decoration:none;
+    font-weight:bold;
 }
