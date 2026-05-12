@@ -18,5 +18,16 @@ def signup():
         email=email
     )
 
+@app.route("/loginpage")
+def loginpage():
+    return render_template("login.html")
+
+@app.route("/login", methods=["POST"])
+def login():
+
+    email = request.form["email"]
+
+    return f"Welcome Back {email}"
+
 if __name__ == "__main__":
     app.run(debug=True)
