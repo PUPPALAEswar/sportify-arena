@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Add Venue</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<div class="signup-box">
+
+<h1>Add Venue</h1>
+
+<form action="/save_venue" method="POST">
+
+<input
+type="text"
+name="venue_name"
+placeholder="Venue Name"
+required>
+
+<select name="sport">
+
+<option>Cricket</option>
+
+<option>Volleyball</option>
+
+</select>
+
+<input
+type="text"
+name="location"
+placeholder="Location"
+required>
+
+<input
+type="text"
+name="available_time"
+placeholder="Available Time"
+required>
+
+<input
+type="text"
+name="contact"
+placeholder="Contact Number"
+required>
+
+<button type="submit">
+Save Venue
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

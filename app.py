@@ -52,6 +52,20 @@ class Match(db.Model):
 
     match_date = db.Column(db.String(50), nullable=False)
 
+class Venue(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    venue_name = db.Column(db.String(100), nullable=False)
+
+    sport = db.Column(db.String(50), nullable=False)
+
+    location = db.Column(db.String(100), nullable=False)
+
+    available_time = db.Column(db.String(100), nullable=False)
+
+    contact = db.Column(db.String(20), nullable=False)
+
 
 # =========================
 # HOME PAGE
@@ -249,6 +263,76 @@ def matches():
         "matches.html",
         matches=all_matches
     )
+
+@app.route("/add_venue")
+def add_venue():
+
+    return render_template("add_venue.html")
+
+
+@app.route("/save_venue", methods=["POST"])
+def save_venue():
+
+    venue_name = request.form["venue_name"]
+
+    sport = request.form["sport"]
+
+    location = request.form["location"]
+
+    available_time = request.form["available_time"]
+
+    contact = request.form["contact"]
+
+    new_venue = Venue(
+        venue_name=venue_name,
+        sport=sport,
+        location=location,
+        available_time=available_time,
+        contact=contact
+    )
+
+    db.session.add(new_venue)
+
+    db.session.commit()
+
+    return redirect("/venues")
+
+
+@app.route("/venues")
+def venues():
+
+    all_venues = Venue.query.all()
+
+    return render_template(
+        "venues.html",
+        venues=all_venues
+    )
+@app.route("/find_courts")
+def find_courts():
+
+    return render_template("find_courts.html")
+
+
+@app.route("/search_courts", methods=["POST"])
+def search_courts():
+
+    sport = request.form["sport"]
+
+    location = request.form["location"]
+
+    filtered_venues = Venue.query.filter_by(
+        sport=sport,
+        location=location
+    ).all()
+
+    return render_template(
+        "search_results.html",
+        venues=filtered_venues,
+        sport=sport,
+        location=location
+    )
+
+
 
 
 # =========================

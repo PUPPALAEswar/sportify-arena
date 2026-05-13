@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Sports Venues</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1 class="team-heading">
+Sports Venues
+</h1>
+
+<div class="teams-container">
+
+{% for venue in venues %}
+
+<div class="team-card">
+
+<div class="sport-badge">
+{{ venue.sport }}
+</div>
+
+<h2>
+{{ venue.venue_name }}
+</h2>
+
+<p>
+📍 {{ venue.location }}
+</p>
+
+<p>
+⏰ {{ venue.available_time }}
+</p>
+
+<p>
+📞 {{ venue.contact }}
+</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>
