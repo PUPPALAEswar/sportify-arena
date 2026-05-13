@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Schedule Match</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<div class="signup-box">
+
+<h1>Schedule Match</h1>
+
+<form action="/create_match" method="POST">
+
+<select name="team1">
+
+{% for team in teams %}
+
+<option>{{ team.team_name }}</option>
+
+{% endfor %}
+
+</select>
+
+<select name="team2">
+
+{% for team in teams %}
+
+<option>{{ team.team_name }}</option>
+
+{% endfor %}
+
+</select>
+
+<select name="sport">
+
+<option>Cricket</option>
+
+<option>Volleyball</option>
+
+</select>
+
+<input
+type="date"
+name="match_date"
+required>
+
+<button type="submit">
+Schedule Match
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

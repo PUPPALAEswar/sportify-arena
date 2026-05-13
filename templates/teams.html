@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Registered Teams</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+
+    <h1>Sportify Arena</h1>
+
+    <div>
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+<h1 class="team-heading">
+    Registered Teams
+</h1>
+
+<div class="teams-container">
+
+{% for team in teams %}
+
+<div class="team-card">
+
+    <div class="sport-badge">
+        {{ team.sport }}
+    </div>
+
+    <h2>{{ team.team_name }}</h2>
+
+    <p>
+        👨 Captain:
+        {{ team.captain_name }}
+    </p>
+
+    <p>
+        📞 Contact:
+        {{ team.contact }}
+    </p>
+
+    <a
+    href="/delete_team/{{ team.id }}"
+    class="delete-btn">
+
+        Delete Team
+
+    </a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>
